@@ -3,8 +3,10 @@ package main
 import (
 	"fmt"
 	"least_count/deck"
+	"least_count/playingCardDistributor"
 )
 
 func main() {
-	fmt.Println(deck.Create())
+	cards := deck.Create()
+	fmt.Println(playingCardDistributor.Shuffle(cards))
 }

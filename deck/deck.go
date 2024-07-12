@@ -4,10 +4,10 @@ func Create() [54]Card {
 
 	var cards [54]Card
 
-	for i, suit := range suits {
-		for j, symbol := range symbols {
+	for suitIndex, suit := range suits {
+		for symbolIndex, symbol := range symbols {
 			card := Card{suit, symbol, symbolValues[symbol]}
-			cards[(i*13)+j] = card
+			cards[(suitIndex*13)+symbolIndex] = card
 		}
 	}
 
