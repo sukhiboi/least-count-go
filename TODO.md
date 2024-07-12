@@ -52,3 +52,7 @@
   - It should define all 13 cards
   - Should assign the values of each card
   - Should return the card deck
+
+- Have your own immutuable class
+  - Copies
+  - References
