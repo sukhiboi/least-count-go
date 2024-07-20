@@ -1,12 +1,16 @@
 package deck
 
+func CreateCard(suit Suit, symbol Symbol, value int) Card {
+  return Card{suit, symbol, value}
+}
+
 func Create() [54]Card {
 
 	var cards [54]Card
 
 	for suitIndex, suit := range suits {
 		for symbolIndex, symbol := range symbols {
-			card := Card{suit, symbol, symbolValues[symbol]}
+			card := CreateCard(suit, symbol, symbolValues[symbol])
 			cards[(suitIndex*13)+symbolIndex] = card
 		}
 	}

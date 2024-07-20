@@ -1,25 +1,36 @@
 package playingCardDistributor
 
 import (
-	"least_count/deck"
-	"least_count/player"
-	"math/rand"
+  "least_count/deck"
+  "math/rand"
 )
 
 func Shuffle(cards [54]deck.Card) [54]deck.Card {
-	rand.Shuffle(len(cards), func(i, j int) {
-		cards[i], cards[j] = cards[j], cards[i]
-	})
-	return cards
+  rand.Shuffle(len(cards), func(i, j int) {
+    cards[i], cards[j] = cards[j], cards[i]
+  })
+  return cards
 }
 
-func Distribute(players []player.Player, cards [54]deck.Card, noOfCards int) ([]player.Player, []deck.Card) {
-	for index := 0; index < noOfCards; index++ {
-		for playerCount := 0; playerCount < len(players); playerCount++ {
-			players[playerCount].Cards = append(players[playerCount].Cards, cards[index*noOfCards])
-			// remove the distributed cards from cards object and return remaining cards
-		}
-	}
+func Distribute(numberOfPlayers int, cards [54]deck.Card, numberOfCardsPerPlayer int) ([][]deck.Card, []deck.Card) {
 
-	return players, cards[:]
+  distributedCards := make([][]deck.Card, numberOfPlayers)
+  runningCardIndex := len(cards)
+
+  for round := 0; round < numberOfCardsPerPlayer; round++ {
+    for player := 0; player < numberOfPlayers; player++ {
+
+      runningCardIndex--
+
+      if distributedCards[player] == nil {
+        distributedCards[player] = []deck.Card{}
+      } 
+
+      distributedCards[player] = append(distributedCards[player], cards[runningCardIndex])
+    }
+  }
+
+
+  return distributedCards, cards[0:runningCardIndex]
 }
+
