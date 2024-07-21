@@ -56,3 +56,22 @@
 - Have your own immutuable class
   - Copies
   - References
+
+- Game Struct
+  - players
+  - remaining cards
+  - discard pile
+  - joker
+
+- Game Setup
+  - Public setup function
+    - create deck
+    - create players
+    - shuffle deck
+    - distribute the cards
+      - lists of list of cards, remaining cards
+    - update the discard pile 
+    - choose the joker
+    - update joker in all the card piles
+    - Assign it to players
+    - return this

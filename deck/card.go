@@ -3,12 +3,6 @@ package deck
 type Suit string
 type Symbol string
 
-type Card struct {
-	suit   Suit
-	symbol Symbol
-	value  int
-}
-
 const (
 	SPADE   Suit = "spade"
 	HEART   Suit = "heart"
@@ -33,6 +27,13 @@ const (
 	ACE   Symbol = "ace"
 	JOKER Symbol = "joker"
 )
+
+type Card struct {
+	suit    Suit
+	Symbol  Symbol
+	value   int
+	IsJoker bool
+}
 
 var symbols = []Symbol{
 	KING,
